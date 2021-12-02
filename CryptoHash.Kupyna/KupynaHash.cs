@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
-using static KNU.Crypto.HashFunctions.Kupyna.KupynaTransformation;
 
 namespace KNU.Crypto.HashFunctions.Kupyna
 {
+    /// <summary>
+    /// https://usts.kiev.ua/wp-content/uploads/2020/07/dstu-7564-2014.pdf
+    /// </summary>
     public class KupynaHash : HashAlgorithm
     {
         private byte[] _buffer;
@@ -78,7 +80,6 @@ namespace KNU.Crypto.HashFunctions.Kupyna
 
             byte[] paddingBlock = new byte[blockLen];
 
-
             long bitCount = _count * 8;
             paddingBlock[0] = 0x01;
 
@@ -108,7 +109,7 @@ namespace KNU.Crypto.HashFunctions.Kupyna
 
             byte[,] temp = new byte[columns, 8];
             Array.Copy(_state, temp, _state.Length);
-            P(_buffer, temp);
+            Q(_buffer, temp);
             for (int i = 0; i < 8; ++i)
             {
                 for (int j = 0; j < columns; ++j)
@@ -172,8 +173,8 @@ namespace KNU.Crypto.HashFunctions.Kupyna
                     temp2[j, i] = data[j * state.GetLength(1) + i];
                 }
             }
-            P(data, temp1);
-            Q(data, temp2);
+            Q(data, temp1);
+            P(data, temp2);
             for (int i = 0; i < state.GetLength(1); ++i)
             {
                 for (int j = 0; j < state.GetLength(0); ++j)
@@ -183,27 +184,29 @@ namespace KNU.Crypto.HashFunctions.Kupyna
             }
         }
 
-        private static void P(byte[] data, byte[,] state)
-        {
-            int rounds = data.Length * 8 <= 256 ? 10 : 14;
-            for (int i = 0; i < rounds; ++i)
-            {
-                AddRoundConstantQ(state, i);
-                SubBytes(state);
-                ShiftBytes(state);
-                MixColumns(state);
-            }
-        }
-
+        // T - 2
         private static void Q(byte[] data, byte[,] state)
         {
             int rounds = data.Length * 8 <= 256 ? 10 : 14;
             for (int i = 0; i < rounds; ++i)
             {
-                AddRoundConstantP(state, i);
-                SubBytes(state);
-                ShiftBytes(state);
-                MixColumns(state);
+                KupynaTransformation.AddRoundConstantQ(state, i);
+                KupynaTransformation.SubBytes(state);
+                KupynaTransformation.ShiftBytes(state);
+                KupynaTransformation.MixColumns(state);
+            }
+        }
+
+        // T - 2**64
+        private static void P(byte[] data, byte[,] state)
+        {
+            int rounds = data.Length * 8 <= 256 ? 10 : 14;
+            for (int i = 0; i < rounds; ++i)
+            {
+                KupynaTransformation.AddRoundConstantP(state, i);
+                KupynaTransformation.SubBytes(state);
+                KupynaTransformation.ShiftBytes(state);
+                KupynaTransformation.MixColumns(state);
             }
         }
     }

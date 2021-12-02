@@ -1,5 +1,4 @@
-﻿using KNU.Crypto.HashFunctions.Kupyna;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,6 +9,12 @@ namespace KNU.Crypto.HashFunctions
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+            using var sha256 = new SHA256C.SHA256C();
+            RunPOW(sha256);
+        }
+
         private static int ProofOfWork(HashAlgorithm hashAlgorithm, int substringSize = 1)
         {
             int i = 0;
@@ -20,8 +25,11 @@ namespace KNU.Crypto.HashFunctions
             while (true)
             {
                 random.NextBytes(b);
-                var hash = GetHexString(hashAlgorithm.ComputeHash(b));
-                var sub = hash.Substring(0, substringSize);
+
+                var hash = hashAlgorithm.ComputeHash(b);
+                var hexHash = GetHexString(hash);
+
+                var sub = hexHash[..substringSize];
 
                 if (previuosAttempts.Contains(sub))
                 {
@@ -34,17 +42,6 @@ namespace KNU.Crypto.HashFunctions
 
                 i++;
             }
-        }
-
-        private static string GetHexString(byte[] data)
-        {
-            var sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            return sBuilder.ToString();
         }
 
         private static void RunPOW(HashAlgorithm hashAlgorithm, int maxIter = 6)
@@ -68,61 +65,21 @@ namespace KNU.Crypto.HashFunctions
                     runTimes.AddLast(sw.ElapsedMilliseconds);
                 }
 
-                /*Console.WriteLine($"Substring size:\t{i}");
+                Console.WriteLine($"Substring size:\t{i}");
                 Console.WriteLine($"Average time:\t{runTimes.Average()} ms.");
-                Console.WriteLine($"Average iterations:\t{iterations.Average()}");*/
-                Console.WriteLine($"{i}  |  {Math.Round(runTimes.Average(),3)} ms.  |  {Math.Round(iterations.Average(),1)}  ");
+                Console.WriteLine($"Average iterations:\t{iterations.Average()}\n");
             }
         }
 
-        private static void RunBenchmark(HashAlgorithm hashAlgorithm)
+        private static string GetHexString(byte[] data)
         {
-            Stopwatch sw = new Stopwatch();
-
-            Random rnd = new Random();
-            var b = new byte[12048];
-
-            rnd.NextBytes(b);
-            sw.Start();
-            var hash = hashAlgorithm.ComputeHash(b);
-            sw.Stop();
-
-            Console.WriteLine($"{hashAlgorithm.GetType()}({hashAlgorithm.HashSize}) | {sw.ElapsedMilliseconds} ms.");
-        }
-
-        static void Main(string[] args)
-        {
-            using (var sha256 = new SHA256C.SHA256C())
+            var sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
             {
-                RunBenchmark(sha256);
+                sBuilder.Append(data[i].ToString("x2"));
             }
 
-            using (var sha256 = SHA256.Create())
-            {
-                RunBenchmark(sha256);
-            }
-
-            using (var kupyna = new KupynaHash(256))
-            {
-                RunBenchmark(kupyna);
-            }
-
-            using (var kupyna = new KupynaHash(304))
-            {
-                RunBenchmark(kupyna);
-            }
-
-            using (var kupyna = new KupynaHash(384))
-            {
-                RunBenchmark(kupyna);
-            }
-
-            using (var kupyna = new KupynaHash(512))
-            {
-                RunBenchmark(kupyna);
-            }
-
-
+            return sBuilder.ToString();
         }
     }
 }

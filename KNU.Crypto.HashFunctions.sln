@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNU.Crypto.HashFunctions.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNU.Crypto.HashFunctions.SHA256C.Tests", "CryptoHash.SHA256C.Tests\KNU.Crypto.HashFunctions.SHA256C.Tests.csproj", "{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNU.Crypto.HashFunctions.Benchmarks", "KNU.Crypto.HashFunctions.Benchmarks\KNU.Crypto.HashFunctions.Benchmarks.csproj", "{63C678E9-94FC-49D6-886C-4FBC8D5E9C76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C678E9-94FC-49D6-886C-4FBC8D5E9C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C678E9-94FC-49D6-886C-4FBC8D5E9C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C678E9-94FC-49D6-886C-4FBC8D5E9C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C678E9-94FC-49D6-886C-4FBC8D5E9C76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,13 @@ using System.Security.Cryptography;
 
 namespace KNU.Crypto.HashFunctions.SHA256C
 {
+    /// <summary>
+    /// Modification of 
+    /// https://github.com/microsoft/referencesource/blob/master/mscorlib/system/security/cryptography/sha256managed.cs
+    /// </summary>
+    /// <remarks>
+    /// follow https://tproger.ru/translations/sha-2-step-by-step/
+    /// </remarks>
     public class SHA256C : HashAlgorithm
     {
         private byte[] _buffer;
@@ -31,6 +38,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
         {
             _count = 0;
 
+            // step 2
             _state[0] = 0x6a09e667;
             _state[1] = 0xbb67ae85;
             _state[2] = 0x3c6ef372;
@@ -57,6 +65,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
                 blockLen += 64;
             }
 
+            // step 1.3-1.4
             byte[] paddingBlock = new byte[blockLen];
 
 
@@ -79,6 +88,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
             return hash;
         }
 
+        // step 4, main 
         private void HashBytes(byte[] array, int offset, int size)
         {
             int inOffset = offset;
@@ -87,6 +97,8 @@ namespace KNU.Crypto.HashFunctions.SHA256C
 
             _count += size;
 
+            // first block (might be not 64 bits length)
+            // step 5.1 - 5.2
             if (buffPos > 0 && (buffPos + inSize) >= 64)
             {
                 Buffer.BlockCopy(array, inOffset, _buffer, buffPos, 64 - buffPos);
@@ -109,6 +121,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
             }
         }
 
+        // step 3
         private readonly static uint[] _k = {
             0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
             0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -130,6 +143,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
 
         private static void Transform(byte[] block, uint[] state)
         {
+            // step 6
             uint a = state[0],
                  b = state[1],
                  c = state[2],
@@ -158,6 +172,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
                 a = T1 + T2;                
             }
 
+            // step 7
             state[0] += a;
             state[1] += b;
             state[2] += c;
@@ -232,6 +247,7 @@ namespace KNU.Crypto.HashFunctions.SHA256C
             return (RotateRight(x, 6) ^ RotateRight(x, 11) ^ RotateRight(x, 25));
         }
 
+        // step 5.3
         private static void ExpandWords(uint[] words)
         {
             if (words.Length != 64)

@@ -14,13 +14,13 @@ namespace CryptoHash
         private static int ProofOfWork(HashAlgorithm hashAlgorithm, int substringSize = 1)
         {
             int i = 0;
-            Random rnd = new Random();
-            ISet<string> previuosAttempts = new HashSet<string>();
-            byte[] b = new byte[256];
+            var random = new Random();
+            var previuosAttempts = new HashSet<string>();
+            var b = new byte[256];
 
             while (true)
             {
-                rnd.NextBytes(b);
+                random.NextBytes(b);
                 var hash = GetHexString(hashAlgorithm.ComputeHash(b));
                 var sub = hash.Substring(0, substringSize);
 

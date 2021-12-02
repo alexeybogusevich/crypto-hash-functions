@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CryptoHash.Kupyna\CryptoHash.Kupyna.csproj" />
-    <ProjectReference Include="..\CryptoHash.SHA256C\CryptoHash.SHA256C.csproj" />
+    <ProjectReference Include="..\CryptoHash.Kupyna\KNU.Crypto.HashFunctions.Kupyna.csproj" />
+    <ProjectReference Include="..\CryptoHash.SHA256C\KNU.Crypto.HashFunctions.SHA256C.csproj" />
   </ItemGroup>
 
 </Project>

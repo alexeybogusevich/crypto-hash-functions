@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoHash", "CryptoHash\CryptoHash.csproj", "{7610E700-7817-4F6F-A16C-61AA2AB2075E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoHash.Kupyna", "CryptoHash.Kupyna\CryptoHash.Kupyna.csproj", "{8671A7FF-24B1-4C4B-AFA1-A5EF5356A2E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoHash.SHA256C", "CryptoHash.SHA256C\CryptoHash.SHA256C.csproj", "{B8F25A43-57BD-4C9D-AC13-F8848EA4F200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoHash.Kupyna.Tests", "CryptoHash.Kupyna.Tests\CryptoHash.Kupyna.Tests.csproj", "{70827BAD-54C7-4FD4-B2CF-9CFD9984B7EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoHash.SHA256C.Tests", "CryptoHash.SHA256C.Tests\CryptoHash.SHA256C.Tests.csproj", "{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7610E700-7817-4F6F-A16C-61AA2AB2075E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7610E700-7817-4F6F-A16C-61AA2AB2075E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7610E700-7817-4F6F-A16C-61AA2AB2075E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7610E700-7817-4F6F-A16C-61AA2AB2075E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8671A7FF-24B1-4C4B-AFA1-A5EF5356A2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8671A7FF-24B1-4C4B-AFA1-A5EF5356A2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8671A7FF-24B1-4C4B-AFA1-A5EF5356A2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8671A7FF-24B1-4C4B-AFA1-A5EF5356A2E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F25A43-57BD-4C9D-AC13-F8848EA4F200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F25A43-57BD-4C9D-AC13-F8848EA4F200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F25A43-57BD-4C9D-AC13-F8848EA4F200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F25A43-57BD-4C9D-AC13-F8848EA4F200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70827BAD-54C7-4FD4-B2CF-9CFD9984B7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70827BAD-54C7-4FD4-B2CF-9CFD9984B7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70827BAD-54C7-4FD4-B2CF-9CFD9984B7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70827BAD-54C7-4FD4-B2CF-9CFD9984B7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5D24AC-1C47-43FD-A9B4-966C0627B94D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F38A94F4-2922-48A1-913D-99D468399F8F}
+	EndGlobalSection
+EndGlobal

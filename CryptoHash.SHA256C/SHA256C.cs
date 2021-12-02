@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace CryptoHash.SHA256C
+namespace KNU.Crypto.HashFunctions.SHA256C
 {
     public class SHA256C : HashAlgorithm
     {

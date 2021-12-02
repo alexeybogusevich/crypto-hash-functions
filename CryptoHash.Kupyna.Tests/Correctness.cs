@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace CryptoHash.Kupyna.Tests
+namespace KNU.Crypto.HashFunctions.Kupyna.Tests
 {
     public class Correctness
     {

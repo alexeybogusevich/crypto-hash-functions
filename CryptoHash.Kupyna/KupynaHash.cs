@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
-using static CryptoHash.Kupyna.KupynaTransformation;
+using static KNU.Crypto.HashFunctions.Kupyna.KupynaTransformation;
 
-namespace CryptoHash.Kupyna
+namespace KNU.Crypto.HashFunctions.Kupyna
 {
     public class KupynaHash : HashAlgorithm
     {

@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using Xunit;
 
-namespace CryptoHash.SHA256C.Tests
+namespace KNU.Crypto.HashFunctions.SHA256C.Tests
 {
     public class Correctness
     {

@@ -1,5 +1,4 @@
-﻿using CryptoHash.Kupyna;
-using CryptoHash.SHA256C;
+﻿using KNU.Crypto.HashFunctions.Kupyna;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CryptoHash
+namespace KNU.Crypto.HashFunctions
 {
     class Program
     {
@@ -48,7 +47,7 @@ namespace CryptoHash
             return sBuilder.ToString();
         }
 
-        private static void RunPOF(HashAlgorithm hashAlgorithm, int maxIter = 6)
+        private static void RunPOW(HashAlgorithm hashAlgorithm, int maxIter = 6)
         {
             Stopwatch sw = new Stopwatch();
             Console.WriteLine($"\n**{hashAlgorithm.GetType()} -- {hashAlgorithm.HashSize}**\n");

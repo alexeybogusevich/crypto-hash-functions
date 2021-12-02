@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CryptoHash.Kupyna
+namespace KNU.Crypto.HashFunctions.Kupyna
 {
     public static class KupynaTransformation
     {
